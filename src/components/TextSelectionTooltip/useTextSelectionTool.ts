@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { hideSiderTooltip } from "./utils";
 import { useToast } from "@/hooks/use-toast";
+import {
+  addListenerContextMenuEvents,
+  removeListenerContextMenuEvents,
+} from "mathpix-markdown-it/lib/contex-menu";
 /*
  * 复制选择内容到剪贴版
  */
@@ -30,6 +34,7 @@ export const useTextSelectionTooltip = () => {
   const { toast } = useToast();
 
   useEffect(() => {
+    addListenerContextMenuEvents();
     const handleMouseUp = () => {
       const selectedText = window.getSelection()?.toString();
       if (selectedText) {
@@ -52,6 +57,7 @@ export const useTextSelectionTooltip = () => {
     document.addEventListener("mouseup", handleMouseUp);
     return () => {
       document.removeEventListener("mouseup", handleMouseUp);
+      removeListenerContextMenuEvents();
     };
   }, []);
 

@@ -10,6 +10,7 @@ import {
 import TextSelectionTooltip from "./components/TextSelectionTooltip/TextSelectionTooltip";
 import useOpenSider from "./hooks/useOpenSider";
 import { Toaster } from "@/components/ui/toaster"
+import MmdContent from "./components/MmdContent";
 function App() {
   const [isPanelOpen, setIsPanelOpen] = useState(true);
   const [ebooks, setEbooks] = useState([]);
@@ -41,7 +42,9 @@ function App() {
           </Button>
         </div>
 
-        <div className="border p-4 h-full">Ebook content goes here...</div>
+        <div className="border p-4 h-full">
+          <MmdContent />
+        </div>
       </div>
 
       {/* Right Sidebar */}
